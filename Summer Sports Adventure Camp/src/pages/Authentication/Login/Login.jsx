@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Login = () => {
+
+  const { signIn } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -9,7 +14,15 @@ const Login = () => {
   } = useForm();
 
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+
+    signIn(email, password)
+    .then(() => {
+        
+    })
+  };
 
 
   
