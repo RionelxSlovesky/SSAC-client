@@ -5,10 +5,13 @@ import Navbar from "../shared/Navbar";
 
 const Main = () => {
     return (
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[1400px] mx-auto flex flex-col min-h-screen">
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className="flex-grow">
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
+            
         </div>
     );
 };
