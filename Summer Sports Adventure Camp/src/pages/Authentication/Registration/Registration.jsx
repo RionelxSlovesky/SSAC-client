@@ -1,14 +1,28 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Registration = () => {
+  const { signUp, updateUserProfile } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const name = data.name;
+    const email = data.email;
+    const photo = data.photo;
+    const password = data.password;
+
+    signUp(email, password)
+    .then(() => {
+        updateUserProfile(name,photo)
+    })
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -103,7 +117,7 @@ const Registration = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary">Register</button>
             </div>
           </form>
         </div>
