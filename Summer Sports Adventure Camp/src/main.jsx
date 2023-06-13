@@ -7,12 +7,10 @@ import router from "./routes/Routes.jsx";
 // Import slider css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import AuthProvider from "./providers/AuthProvider";
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </AuthProvider>
+    <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 );

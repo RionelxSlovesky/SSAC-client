@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, loading } = useContext(AuthContext);
+  const user = false;
 
   return (
     <div className="navbar bg-base-100">
@@ -19,29 +17,26 @@ const Navbar = () => {
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/instructors">Instructors</Link>
+            <Link to='/instructors'>Instructors</Link>
           </li>
           <li>
-            <Link to="/classes">Classes</Link>
+            <Link to='/classes'>Classes</Link>
           </li>
-          {loading || (user ? (
-            <></>
-          ) : (
+          {
+            user || 
             <li>
-              <Link to="/login">Login</Link>
-            </li>
-          ))}
+            <Link to='/login'>Login</Link>
+          </li>
+          }
         </ul>
 
-        {loading || (user ? (
+        {user && (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img
-                  className="bg-black"
-                  src={user.photoURL}
-                  alt={user.displayName}
-                  title={user.displayName}
+                  className="bg-red-600"
+                  src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 />
               </div>
             </label>
@@ -57,9 +52,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-        ) : (
-          <></>
-        ))}
+        )}
       </div>
     </div>
   );
