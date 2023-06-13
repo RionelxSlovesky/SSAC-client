@@ -1,9 +1,10 @@
+import Navbar from "../shared/Navbar";
 
 
 const Main = () => {
     return (
-        <div>
-            <h1>MAINNNN</h1>
+        <div className="max-w-[1400px] mx-auto">
+            <Navbar></Navbar>
         </div>
     );
 };
