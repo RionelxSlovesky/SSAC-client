@@ -18,10 +18,18 @@ const Registration = () => {
     const photo = data.photo;
     const password = data.password;
 
-    signUp(email, password)
-    .then(() => {
-        updateUserProfile(name,photo)
-    })
+    signUp(email, password).then(() => {
+      updateUserProfile(name, photo).then(() => {
+        const savedUser = { name: name, email: email, role: 'student' };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(savedUser),
+        });
+      });
+    });
   };
 
   return (
