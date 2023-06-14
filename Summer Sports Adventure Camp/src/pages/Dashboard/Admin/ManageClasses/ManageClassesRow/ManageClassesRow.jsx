@@ -1,6 +1,4 @@
-const ManageClassesRow = ({ classItem, refetch }) => {
-
-
+const ManageClassesRow = ({ classItem, refetch, setId }) => {
   const handleApprove = () => {
     fetch(`http://localhost:5000/classes/approve/${classItem._id}`, {
       method: "PATCH",
@@ -18,6 +16,11 @@ const ManageClassesRow = ({ classItem, refetch }) => {
       refetch();
     });
   };
+
+  const handleModal = () => {
+    setId(classItem._id)
+    window.my_modal_1.showModal()
+  }
 
   return (
     <tr>
@@ -47,25 +50,29 @@ const ManageClassesRow = ({ classItem, refetch }) => {
       <td>${classItem.price}</td>
       <td>{classItem.status}</td>
       <th>
-      {
-        classItem.status=='pending' ? <button onClick={handleApprove} className="btn btn-ghost btn-xs">
-          Approve
-        </button> : <button disabled className="btn btn-ghost btn-xs">
-          Approve
-        </button>
-      }
+        {classItem.status == "pending" ? (
+          <button onClick={handleApprove} className="btn btn-ghost btn-xs">
+            Approve
+          </button>
+        ) : (
+          <button disabled className="btn btn-ghost btn-xs">
+            Approve
+          </button>
+        )}
       </th>
       <th>
-      {
-        classItem.status=='pending' ? <button onClick={handleDeny} className="btn btn-ghost btn-xs">
-          Deny
-        </button> : <button disabled className="btn btn-ghost btn-xs">
-          Deny
-        </button>
-      }
+        {classItem.status == "pending" ? (
+          <button onClick={handleDeny} className="btn btn-ghost btn-xs">
+            Deny
+          </button>
+        ) : (
+          <button disabled className="btn btn-ghost btn-xs">
+            Deny
+          </button>
+        )}
       </th>
       <th>
-        <button className="btn btn-ghost btn-xs">Send Feedback</button>
+        <button onClick={handleModal} className="btn btn-ghost btn-xs">Send Feedback</button>
       </th>
     </tr>
   );
