@@ -22,7 +22,7 @@ const ManageUsers = () => {
           <tbody>
             {/* rows */}
             {
-                usersInfo.map(user => <ManagerUsersRow key={user._id} user={user}></ManagerUsersRow>)
+                usersInfo.map(user => <ManagerUsersRow key={user._id} user={user} refetch={refetch}></ManagerUsersRow>)
             }
           </tbody>
         </table>

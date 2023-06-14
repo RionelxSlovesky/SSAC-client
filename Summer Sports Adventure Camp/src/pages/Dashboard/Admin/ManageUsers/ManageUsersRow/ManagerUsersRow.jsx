@@ -1,4 +1,25 @@
-const ManagerUsersRow = ({user}) => {
+const ManagerUsersRow = ({user, refetch}) => {
+
+    const handleMakeInstructor = () => {
+        fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+            method: 'PATCH'
+        })
+        .then(() => {
+            alert(user.name + ' made instructor')
+            refetch()
+        })
+    }
+
+    const handleMakeAdmin = () => {
+        fetch(`http://localhost:5000/users/admin/${user._id}`,{
+            method: 'PATCH'
+        })
+        .then(() => {
+            alert(user.name + ' made instructor')
+            refetch()
+        })
+    }
+
   return (
     <tr>
       <td>
@@ -19,10 +40,14 @@ const ManagerUsersRow = ({user}) => {
       </td>
       <td>{user.role}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">Make Instructor</button>
+        {
+            user.role == 'instructor' ? <button disabled className="btn btn-ghost btn-xs">Make Instructor</button> : <button onClick={handleMakeInstructor} className="btn btn-ghost btn-xs">Make Instructor</button>
+        }
       </th>
       <th>
-        <button className="btn btn-ghost btn-xs">Make Admin</button>
+        {
+            user.role == 'admin' ? <button disabled  className="btn btn-ghost btn-xs">Make Admin</button> : <button onClick={handleMakeAdmin}  className="btn btn-ghost btn-xs">Make Admin</button>
+        }
       </th>
     </tr>
   );
