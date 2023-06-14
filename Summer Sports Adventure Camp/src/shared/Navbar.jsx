@@ -50,7 +50,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-50"
             >
               <li>
-                <a>Dashboard</a>
+                <Link to='/dashboard'>Dashboard</Link>
               </li>
               <li>
                 <Link onClick={logOut}>Logout</Link>
