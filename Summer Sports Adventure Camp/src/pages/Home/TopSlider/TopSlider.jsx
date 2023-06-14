@@ -13,7 +13,7 @@ const TopSlider = () => {
     slidesToScroll: 1,
   };
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className="mb-14">
       <div>
         <img className="h-[200px] md:h-[300px] lg:h-[600px] w-full object-cover" src={img1} alt="" />
       </div>
