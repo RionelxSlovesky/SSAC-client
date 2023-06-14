@@ -20,7 +20,7 @@ const Registration = () => {
 
     signUp(email, password).then(() => {
       updateUserProfile(name, photo).then(() => {
-        const savedUser = { name: name, email: email, role: 'student' };
+        const savedUser = { name: name, email: email, img: photo, role: 'student' };
         fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
