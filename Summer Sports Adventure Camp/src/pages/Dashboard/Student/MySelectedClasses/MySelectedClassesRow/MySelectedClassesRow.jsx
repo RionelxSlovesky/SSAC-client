@@ -1,6 +1,4 @@
 const MySelectedClassesRow = ({ selectedClass, refetch }) => {
-
-
   const handleDelete = () => {
     fetch(`http://localhost:5000/selectedClasses/${selectedClass._id}`, {
       method: "DELETE",
@@ -9,12 +7,41 @@ const MySelectedClassesRow = ({ selectedClass, refetch }) => {
       .then((data) => {
         if (data.deletedCount > 0) {
           alert(`${selectedClass._id} removed from selected classes`);
-          refetch()
+          refetch();
         }
       });
   };
 
+  const handlePay = () => {
+    fetch("http://localhost:5000/enrolledClasses", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(selectedClass),
+    });
 
+    fetch(`http://localhost:5000/selectedClasses/${selectedClass._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert(
+            `Payment Successful. ${selectedClass._id} added to Enrolled Classes.`
+          );
+          refetch();
+        }
+      });
+
+    fetch(`http://localhost:5000/classes/seats/${selectedClass.classId}`, {
+      method: "PATCH",
+    })
+
+    fetch(`http://localhost:5000/classes/enrolled/${selectedClass.classId}`, {
+      method: "PATCH",
+    })
+  };
 
   return (
     <tr>
@@ -39,7 +66,9 @@ const MySelectedClassesRow = ({ selectedClass, refetch }) => {
         <button onClick={handleDelete} className="btn btn-ghost btn-xs">
           delete
         </button>
-        <button className="btn btn-ghost btn-xs">pay</button>
+        <button onClick={handlePay} className="btn btn-ghost btn-xs">
+          pay
+        </button>
       </th>
     </tr>
   );
