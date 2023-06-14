@@ -1,4 +1,25 @@
 const ClassesCard = ({ classItem, role }) => {
+  const handleSelect = () => {
+    const selectedClass = {
+      classId: classItem._id,
+      classImage: classItem.classImage,
+      className: classItem.className,
+      instructorName: classItem.instructorName,
+      price: classItem.price
+    };
+
+    fetch("http://localhost:5000/selectedClasses", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(selectedClass),
+    })
+    .then(() => {
+        alert(classItem.className + ' added to selected courses. Please check your dashboard.')
+    })
+  };
+
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
@@ -23,6 +44,7 @@ const ClassesCard = ({ classItem, role }) => {
           </button>
         ) : (
           <button
+            onClick={handleSelect}
             className={`btn ${
               classItem.seats == 0 ? "bg-red-600 text-white" : ""
             }`}
