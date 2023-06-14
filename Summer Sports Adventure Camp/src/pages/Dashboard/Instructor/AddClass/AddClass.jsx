@@ -2,20 +2,27 @@ import { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 
 const AddClass = () => {
+  const { user } = useContext(AuthContext);
 
-    const {user} = useContext(AuthContext)
-
-  const handleSubmit = event => {
-    event.preventDefault()
-    const form = event.target
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
     const className = form.className.value;
     const classImage = form.classImage.value;
     const instructorName = form.instructorName.value;
     const instructorEmail = form.instructorEmail.value;
-    const seats = form.seats.value;
-    const price = form.price.value;
+    const seats = parseInt(form.seats.value);
+    const price = parseFloat(form.price.value);
 
-    console.log(className, classImage, instructorName, instructorEmail, seats, price)
+    const savedClass = {className,classImage,instructorName,instructorEmail,seats,price,status:'pending'}
+
+    fetch("http://localhost:5000/class", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(savedClass),
+    });
   };
 
   return (
@@ -125,6 +132,7 @@ const AddClass = () => {
                 <input
                   required
                   type="number"
+                  step="0.01"
                   name="price"
                   id="price"
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
