@@ -26,6 +26,7 @@ const MySelectedClasses = () => {
               <MySelectedClassesRow
                 key={selectedClass._id}
                 selectedClass={selectedClass}
+                refetch={refetch}
               ></MySelectedClassesRow>
             ))}
           </tbody>

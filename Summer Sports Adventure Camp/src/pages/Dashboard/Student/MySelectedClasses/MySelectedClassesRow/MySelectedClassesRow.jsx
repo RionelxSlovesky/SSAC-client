@@ -1,4 +1,21 @@
-const MySelectedClassesRow = ({selectedClass}) => {
+const MySelectedClassesRow = ({ selectedClass, refetch }) => {
+
+
+  const handleDelete = () => {
+    fetch(`http://localhost:5000/selectedClasses/${selectedClass._id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert(`${selectedClass._id} removed from selected classes`);
+          refetch()
+        }
+      });
+  };
+
+
+
   return (
     <tr>
       <td>
@@ -19,7 +36,9 @@ const MySelectedClassesRow = ({selectedClass}) => {
       <td>{selectedClass.instructorName}</td>
       <td>${selectedClass.price}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">delete</button>
+        <button onClick={handleDelete} className="btn btn-ghost btn-xs">
+          delete
+        </button>
         <button className="btn btn-ghost btn-xs">pay</button>
       </th>
     </tr>
