@@ -1,4 +1,24 @@
-const ManageClassesRow = ({classItem}) => {
+const ManageClassesRow = ({ classItem, refetch }) => {
+
+
+  const handleApprove = () => {
+    fetch(`http://localhost:5000/classes/approve/${classItem._id}`, {
+      method: "PATCH",
+    }).then(() => {
+      alert(classItem.className + " approved");
+      refetch();
+    });
+  };
+
+  const handleDeny = () => {
+    fetch(`http://localhost:5000/classes/deny/${classItem._id}`, {
+      method: "PATCH",
+    }).then(() => {
+      alert(classItem.className + " denied");
+      refetch();
+    });
+  };
+
   return (
     <tr>
       <td>
@@ -27,10 +47,22 @@ const ManageClassesRow = ({classItem}) => {
       <td>${classItem.price}</td>
       <td>{classItem.status}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">Approve</button>
+      {
+        classItem.status=='pending' ? <button onClick={handleApprove} className="btn btn-ghost btn-xs">
+          Approve
+        </button> : <button disabled className="btn btn-ghost btn-xs">
+          Approve
+        </button>
+      }
       </th>
       <th>
-        <button className="btn btn-ghost btn-xs">Deny</button>
+      {
+        classItem.status=='pending' ? <button onClick={handleDeny} className="btn btn-ghost btn-xs">
+          Deny
+        </button> : <button disabled className="btn btn-ghost btn-xs">
+          Deny
+        </button>
+      }
       </th>
       <th>
         <button className="btn btn-ghost btn-xs">Send Feedback</button>

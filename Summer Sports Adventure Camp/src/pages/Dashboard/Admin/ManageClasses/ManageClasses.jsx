@@ -26,7 +26,7 @@ const ManageClasses = () => {
           <tbody>
             {/* rows */}
             {
-                classes.map(c => <ManageClassesRow key={c._id} classItem={c}></ManageClassesRow>)
+                classes.map(c => <ManageClassesRow key={c._id} classItem={c} refetch={refetch}></ManageClassesRow>)
             }
           </tbody>
         </table>
