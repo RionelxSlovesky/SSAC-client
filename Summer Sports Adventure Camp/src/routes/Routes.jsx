@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Authentication/Login/Login";
 import Registration from "../pages/Authentication/Registration/Registration";
 import AuthRoute from "./AuthRoute";
+import Instructors from "../pages/Instructors/Instructors";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <AuthRoute><Registration></Registration></AuthRoute>
+            },
+            {
+                path: '/instructors',
+                element: <Instructors></Instructors>
             }
         ]
     },
