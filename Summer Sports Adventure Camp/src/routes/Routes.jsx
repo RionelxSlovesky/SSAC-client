@@ -8,6 +8,12 @@ import Registration from "../pages/Authentication/Registration/Registration";
 import AuthRoute from "./AuthRoute";
 import Instructors from "../pages/Instructors/Instructors";
 import Dashboard from "../layout/Dashboard";
+import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
+import MySelectedClasses from "../pages/Dashboard/Student/MySelectedClasses/MySelectedClasses";
+import MyEnrolledClasses from "../pages/Dashboard/Student/MyEnrolledClasses/MyEnrolledClasses";
+import ManageClasses from "../pages/Dashboard/Admin/ManageClasses/ManageClasses";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +38,33 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <Dashboard></Dashboard>,
+                children: [
+                    {
+                        path: '/dashboard/instructor/add-class',
+                        element: <AddClass></AddClass>
+                    },
+                    {
+                        path: '/dashboard/instructor/my-classes',
+                        element: <MyClasses></MyClasses>
+                    },
+                    {
+                        path: '/dashboard/student/my-selected-classes',
+                        element: <MySelectedClasses></MySelectedClasses>
+                    },
+                    {
+                        path: '/dashboard/student/my-enrolled-classes',
+                        element: <MyEnrolledClasses></MyEnrolledClasses>
+                    },
+                    {
+                        path: '/dashboard/admin/manage-classes',
+                        element: <ManageClasses></ManageClasses>
+                    },
+                    {
+                        path: '/dashboard/admin/manage-users',
+                        element: <ManageUsers></ManageUsers>
+                    }
+                ]
             }
         ]
     },

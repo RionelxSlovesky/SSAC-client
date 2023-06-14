@@ -2,9 +2,14 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import useUserInfo from "../hooks/useUserInfo";
 
 const Navbar = () => {
   const { user, loading, logOut } = useContext(AuthContext);
+
+  const [userInfo] = useUserInfo();
+
+  const { role } = userInfo;
 
   return (
     <div className="navbar bg-base-100">
@@ -50,7 +55,19 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-50"
             >
               <li>
-                <Link to='/dashboard'>Dashboard</Link>
+
+                {
+                  role == "student" ? <Link to='/dashboard/student/my-selected-classes'>Dashboard</Link> : <></>
+                }
+
+                {
+                  role == "instructor" ? <Link to='/dashboard/instructor/add-class'>Dashboard</Link> : <></>
+                }
+
+                {
+                  role == "admin" ? <Link to='/dashboard/admin/manage-classes'>Dashboard</Link> : <></>
+                }
+
               </li>
               <li>
                 <Link onClick={logOut}>Logout</Link>

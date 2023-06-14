@@ -47,12 +47,12 @@ const Dashboard = () => {
           {role == "instructor" ? (
             <>
               <li>
-                <NavLink>
+                <NavLink to='/dashboard/instructor/add-class'>
                   <AiOutlinePlus></AiOutlinePlus> Add Class
                 </NavLink>
               </li>
               <li>
-                <NavLink>
+                <NavLink to='/dashboard/instructor/my-classes'>
                   <BiNotepad></BiNotepad> My Classes
                 </NavLink>
               </li>
