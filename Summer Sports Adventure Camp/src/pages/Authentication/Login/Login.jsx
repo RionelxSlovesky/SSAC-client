@@ -4,8 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Login = () => {
-
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
 
   const {
     register,
@@ -13,19 +12,30 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-
   const onSubmit = (data) => {
     const email = data.email;
     const password = data.password;
 
-    signIn(email, password)
-    .then(() => {
-        
-    })
+    signIn(email, password).then(() => {});
   };
 
-
-  
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((result) => {
+      const loggedInUser = result.user;
+      const savedUser = {
+        name: loggedInUser.displayName,
+        email: loggedInUser.email,
+        role: 'student'
+      };
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(savedUser),
+      });
+    });
+  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -48,7 +58,9 @@ const Login = () => {
                 placeholder="email"
                 className="input input-bordered"
               />
-              {errors.email && <small className="text-red-600">Email is required</small>}
+              {errors.email && (
+                <small className="text-red-600">Email is required</small>
+              )}
             </div>
             <div className="form-control">
               <label className="label">
@@ -56,13 +68,29 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).*$/ })}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  pattern:
+                    /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).*$/,
+                })}
                 placeholder="password"
                 className="input input-bordered"
               />
-              {errors.password?.type =='required' && <small className="text-red-600">Password is required</small>}
-              {errors.password?.type =='minLength' && <small className="text-red-600">Password must be at least 6 characters long</small>}
-              {errors.password?.type =='pattern' && <small className="text-red-600">Password must contain at least one uppercase and one special character</small>}
+              {errors.password?.type == "required" && (
+                <small className="text-red-600">Password is required</small>
+              )}
+              {errors.password?.type == "minLength" && (
+                <small className="text-red-600">
+                  Password must be at least 6 characters long
+                </small>
+              )}
+              {errors.password?.type == "pattern" && (
+                <small className="text-red-600">
+                  Password must contain at least one uppercase and one special
+                  character
+                </small>
+              )}
               <label className="label">
                 <p className="label-text-alt">
                   New here?{" "}
@@ -76,6 +104,13 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <div className="divider"></div>
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn btn-outline bg-red-400 hover:bg-red-700"
+          >
+            Google
+          </button>
         </div>
       </div>
     </div>
