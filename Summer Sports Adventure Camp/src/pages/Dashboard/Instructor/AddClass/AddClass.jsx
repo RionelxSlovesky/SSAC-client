@@ -14,7 +14,7 @@ const AddClass = () => {
     const seats = parseInt(form.seats.value);
     const price = parseFloat(form.price.value);
 
-    const savedClass = {className,classImage,instructorName,instructorEmail,seats,price,status:'pending'}
+    const savedClass = {className,classImage,instructorName,instructorEmail,seats,price,status:'pending', enrolled: 0, feedback: ''}
 
     fetch("http://localhost:5000/class", {
       method: "POST",
