@@ -30,12 +30,12 @@ const Dashboard = () => {
           {role == "student" ? (
             <>
               <li>
-                <NavLink>
+                <NavLink to='/dashboard/student/my-selected-classes'>
                   <BiNote></BiNote> My Selected Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink>
+                <NavLink to='/dashboard/student/my-enrolled-classes'>
                   <BiNotepad></BiNotepad> My Enrolled Classes
                 </NavLink>
               </li>
