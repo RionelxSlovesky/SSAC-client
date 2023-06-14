@@ -8,7 +8,7 @@ const Instructors = () => {
 
     return (
         <div>
-            <h1 className="text-center my-8 text-4xl">Instructors page</h1>
+            <h1 className="text-center my-8 text-4xl">Our Instructors</h1>
 
             <div className="flex flex-wrap justify-center p-8 gap-4">
                 {
