@@ -8,7 +8,7 @@ const PopularClasses = () => {
       .then((data) => setClasses(data));
   });
   return (
-    <div className="py-8">
+    <div className="py-24">
       <h1 className="text-center text-2xl mb-8">Popular Classes</h1>
       <div className="flex flex-wrap justify-center gap-6 px-4">
         {classes.map((c) => (
