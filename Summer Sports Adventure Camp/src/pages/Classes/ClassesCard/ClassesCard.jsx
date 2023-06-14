@@ -1,10 +1,12 @@
-const ClassesCard = ({ classItem, role }) => {
+const ClassesCard = ({ classItem, role, email }) => {
   const handleSelect = () => {
     const selectedClass = {
       classId: classItem._id,
       classImage: classItem.classImage,
       className: classItem.className,
       instructorName: classItem.instructorName,
+      instructorEmail: classItem.instructorEmail,
+      studentEmail: email,
       price: classItem.price
     };
 

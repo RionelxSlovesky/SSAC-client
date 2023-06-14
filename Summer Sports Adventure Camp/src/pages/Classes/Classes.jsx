@@ -7,7 +7,7 @@ const Classes = () => {
 
   const [userInfo] = useUserInfo();
 
-  const { role } = userInfo;
+  const { role, email } = userInfo;
 
   return (
     <div>
@@ -17,7 +17,7 @@ const Classes = () => {
           classes
           .filter((c) => c.status == "approved")
           .map((c) => (
-            <ClassesCard key={c._id} classItem={c} role={role}></ClassesCard>
+            <ClassesCard key={c._id} classItem={c} role={role} email={email}></ClassesCard>
           ))
         }
       </div>
