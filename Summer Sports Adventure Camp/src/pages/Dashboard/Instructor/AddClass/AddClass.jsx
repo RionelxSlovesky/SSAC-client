@@ -16,7 +16,7 @@ const AddClass = () => {
 
     const savedClass = {className,classImage,instructorName,instructorEmail,seats,price,status:'pending', enrolled: 0, feedback: ''}
 
-    fetch("http://localhost:5000/class", {
+    fetch("https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/class", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,6 +1,6 @@
 const ManageClassesRow = ({ classItem, refetch, setId }) => {
   const handleApprove = () => {
-    fetch(`http://localhost:5000/classes/approve/${classItem._id}`, {
+    fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/approve/${classItem._id}`, {
       method: "PATCH",
     }).then(() => {
       alert(classItem.className + " approved");
@@ -9,7 +9,7 @@ const ManageClassesRow = ({ classItem, refetch, setId }) => {
   };
 
   const handleDeny = () => {
-    fetch(`http://localhost:5000/classes/deny/${classItem._id}`, {
+    fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/deny/${classItem._id}`, {
       method: "PATCH",
     }).then(() => {
       alert(classItem.className + " denied");

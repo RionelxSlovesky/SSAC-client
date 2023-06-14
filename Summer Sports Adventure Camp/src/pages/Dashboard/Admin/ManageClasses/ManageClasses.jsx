@@ -10,7 +10,7 @@ const ManageClasses = () => {
   const handleFeedback = (id) => {
     const feedback = document.getElementById("feedback").value;
 
-    fetch(`http://localhost:5000/classes/feedback/${id}`, {
+    fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/feedback/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

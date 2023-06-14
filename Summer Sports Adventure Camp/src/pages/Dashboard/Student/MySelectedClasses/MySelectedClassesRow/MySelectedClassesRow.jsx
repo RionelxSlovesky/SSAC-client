@@ -1,6 +1,6 @@
 const MySelectedClassesRow = ({ selectedClass, refetch }) => {
   const handleDelete = () => {
-    fetch(`http://localhost:5000/selectedClasses/${selectedClass._id}`, {
+    fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/selectedClasses/${selectedClass._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -13,7 +13,7 @@ const MySelectedClassesRow = ({ selectedClass, refetch }) => {
   };
 
   const handlePay = () => {
-    fetch("http://localhost:5000/enrolledClasses", {
+    fetch("https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/enrolledClasses", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -21,7 +21,7 @@ const MySelectedClassesRow = ({ selectedClass, refetch }) => {
       body: JSON.stringify(selectedClass),
     });
 
-    fetch(`http://localhost:5000/selectedClasses/${selectedClass._id}`, {
+    fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/selectedClasses/${selectedClass._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -34,11 +34,11 @@ const MySelectedClassesRow = ({ selectedClass, refetch }) => {
         }
       });
 
-    fetch(`http://localhost:5000/classes/seats/${selectedClass.classId}`, {
+    fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/seats/${selectedClass.classId}`, {
       method: "PATCH",
     })
 
-    fetch(`http://localhost:5000/classes/enrolled/${selectedClass.classId}`, {
+    fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/enrolled/${selectedClass.classId}`, {
       method: "PATCH",
     })
   };

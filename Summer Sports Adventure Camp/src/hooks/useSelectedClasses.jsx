@@ -9,7 +9,7 @@ const useSelectedClasses = () => {
     queryKey: ["selectedClasses", user?.email],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:5000/selectedClasses?email=${user?.email}`
+        `https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/selectedClasses?email=${user?.email}`
       );
       return response.json();
     },

@@ -9,7 +9,7 @@ const useEnrolledClasses = () => {
     queryKey: ["enrolledClasses", user?.email],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:5000/enrolledClasses?email=${user?.email}`
+        `https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/enrolledClasses?email=${user?.email}`
       );
       return response.json();
     },

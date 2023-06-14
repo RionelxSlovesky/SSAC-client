@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/classes/popular")
+    fetch("https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/popular")
       .then((res) => res.json())
       .then((data) => setClasses(data));
-  });
+  },[classes]);
   return (
     <div className="py-24">
       <h1 className="text-center text-2xl mb-8">Popular Classes</h1>

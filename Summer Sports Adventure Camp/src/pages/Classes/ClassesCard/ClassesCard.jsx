@@ -10,7 +10,7 @@ const ClassesCard = ({ classItem, role, email }) => {
       price: classItem.price
     };
 
-    fetch("http://localhost:5000/selectedClasses", {
+    fetch("https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/selectedClasses", {
       method: "POST",
       headers: {
         "content-type": "application/json",

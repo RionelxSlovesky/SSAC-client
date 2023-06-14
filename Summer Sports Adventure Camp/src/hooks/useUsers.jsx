@@ -7,7 +7,7 @@ const useUsers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const response = await fetch(
-        'http://localhost:5000/users'
+        'https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/users'
       );
       return response.json();
     },

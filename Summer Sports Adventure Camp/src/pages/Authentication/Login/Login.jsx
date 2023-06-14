@@ -28,7 +28,7 @@ const Login = () => {
         img: loggedInUser.photoURL,
         role: 'student'
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

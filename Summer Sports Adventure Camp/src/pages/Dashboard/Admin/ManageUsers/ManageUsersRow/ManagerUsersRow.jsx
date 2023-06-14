@@ -1,7 +1,7 @@
 const ManagerUsersRow = ({user, refetch}) => {
 
     const handleMakeInstructor = () => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`,{
+        fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/users/instructor/${user._id}`,{
             method: 'PATCH'
         })
         .then(() => {
@@ -11,7 +11,7 @@ const ManagerUsersRow = ({user, refetch}) => {
     }
 
     const handleMakeAdmin = () => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`,{
+        fetch(`https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/users/admin/${user._id}`,{
             method: 'PATCH'
         })
         .then(() => {

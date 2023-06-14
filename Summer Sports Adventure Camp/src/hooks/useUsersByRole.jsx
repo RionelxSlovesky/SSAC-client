@@ -6,7 +6,7 @@ const useUsersByRole = (role) => {
     queryKey: ["usersRole", role],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:5000/usersRole/${role}`
+        `https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/usersRole/${role}`
       );
       return response.json();
     },
