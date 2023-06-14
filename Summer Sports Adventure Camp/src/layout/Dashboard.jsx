@@ -64,12 +64,12 @@ const Dashboard = () => {
           {role == "admin" ? (
             <>
               <li>
-                <NavLink>
+                <NavLink to='/dashboard/admin/manage-classes'>
                   <BiNotepad></BiNotepad> Manage Classes
                 </NavLink>
               </li>
               <li>
-                <NavLink>
+                <NavLink to='/dashboard/admin/manage-users'>
                   <MdOutlineManageAccounts></MdOutlineManageAccounts> Manage
                   Users
                 </NavLink>
