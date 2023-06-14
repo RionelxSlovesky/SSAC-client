@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const PopularClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -14,7 +15,14 @@ const PopularClasses = () => {
         {classes.map((c) => (
           <div key={c._id} className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
-              <img
+              <motion.img
+                initial={{ scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                }}
                 src={c.classImage}
                 alt="Shoes"
                 className="rounded-xl w-52 h-52 object-cover"
