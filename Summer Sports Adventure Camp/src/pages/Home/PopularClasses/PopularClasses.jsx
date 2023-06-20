@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const PopularClasses = () => {
-  const [classes, setClasses] = useState([]);
-  useEffect(() => {
-    fetch("https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/popular")
-      .then((res) => res.json())
-      .then((data) => setClasses(data));
-  },[classes]);
+const PopularClasses = ({classes}) => {
   return (
     <div className="py-24">
-      <h1 className="text-center text-2xl mb-8">Popular Classes</h1>
+      <h1 className="text-center text-3xl mb-4
+      md:text-5xl md:mb-8">Popular Classes</h1>
       <div className="flex flex-wrap justify-center gap-6 px-4">
         {classes.map((c) => (
           <div key={c._id} className="card w-96 bg-base-100 shadow-xl">

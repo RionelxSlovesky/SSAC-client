@@ -24,7 +24,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('https://b7a12-summer-camp-server-side-rionelx-slovesky.vercel.app/classes/popular')
             },
             {
                 path: '/login',

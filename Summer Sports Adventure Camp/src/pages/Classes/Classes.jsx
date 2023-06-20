@@ -11,7 +11,8 @@ const Classes = () => {
 
   return (
     <div>
-      <h1 className="text-center my-8 text-4xl">Classes We Provide</h1>
+      <h1 className="text-center text-3xl my-4
+      md:text-5xl md:mt-14 md:mb-8">Classes We Provide</h1>
       <div className="flex flex-wrap justify-center p-8 gap-4">
         {
           classes

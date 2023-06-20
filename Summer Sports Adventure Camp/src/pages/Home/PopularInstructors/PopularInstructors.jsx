@@ -4,7 +4,8 @@ const PopularInstructors = () => {
   const [usersByRole] = useUsersByRole("instructor");
   return (
     <div className="py-24">
-      <h1 className="text-center text-2xl mb-8">Popular Instructors</h1>
+      <h1 className="text-center text-3xl mb-4
+      md:text-5xl md:mb-8">Popular Instructors</h1>
       <div className="flex flex-wrap justify-center gap-6 px-4">
         {usersByRole.slice(0,6).map((user) => (
           <div key={user._id} className="card w-96 bg-base-100 shadow-xl">
